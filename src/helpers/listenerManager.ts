@@ -2,6 +2,11 @@ import { EventType } from "@/const";
 
 const { MouseDown, Mouseup, Mousemove } = EventType;
 
+/**
+ * mouse事件流 集中管理
+ * 绑定事件, 并收集对应事件的卸载回调
+*/
+
 export default class ListenerManger {
   private unbindDownUpCache: UnbindDownUpCache = new WeakMap();
   private unbindMoveCache: UnbindMoveCache = new WeakMap();
@@ -28,13 +33,14 @@ export default class ListenerManger {
   private bindMouseListeners(listenersContext: MouseListenerContext) {
     const { mouseTarget, down, move, up } = listenersContext;
     const moveListener = (ev: Event) => {
-      // 回调函数作为参数，该回调函数会在浏览器下一次重绘之前执行, 请求绘制一段动画
+      // 回调函数作为参数，渲染后空余时间执行人物
       requestAnimationFrame(() => move(ev as MouseEvent));
     };
     const downListener = (ev: Event) => {
       const isTarget = ev.target === mouseTarget;
       const extraCondition = down && down(ev as MouseEvent);
       const shouldBindMove = extraCondition !== false;
+      // down 如果返回true 说明, 将执行mouseMove事件, 需绑定mouseMove移除回调
       if (isTarget && shouldBindMove) {
         const removeMove = this.listenEvent({
           eventType: Mousemove,
@@ -67,6 +73,7 @@ export default class ListenerManger {
     this.unbindMoveCache.delete(mouseTarget);
   }
 
+  // 事件监听绑定, 并返回对应的解除事件监听的回调
   private listenEvent(
     listenerConfig: ListenerConfig,
     options: boolean | AddEventListenerOptions = false,
@@ -93,7 +100,7 @@ export default class ListenerManger {
     return removeListenerCallBack;
   }
 
-  // 生成封装好的监听器
+  // 生成 启动事件监听函数
   private genWrapListener(listenerConfig: ListenerConfig) {
     const { listener, stop, prevent } = listenerConfig;
     return (ev: Event) => {
@@ -107,12 +114,12 @@ export default class ListenerManger {
     };
   }
 
-  // 是否想要绑定到目标元素上
+  // 是否需要绑定到目标元素上
   private isNeedToBindToTargets(targets: HTMLElement[]) {
     return targets.length !== 0;
   }
 
-  // 为单个目标绑定监听器
+  // 为单个目标绑定监听器, 并返回对应的卸载监听器的回调
   private bindListener(
     target: Window | HTMLElement,
     eventType: string,

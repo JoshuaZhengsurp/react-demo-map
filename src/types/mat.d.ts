@@ -20,4 +20,10 @@ declare global {
     boardRect: BoardRect | null;
     initialized: boolean;
   }
+
+  // 初始化抠图画板的基础配置对象
+  export interface UseInitMattingBoardsConfig extends InitMattingBaseConfig {
+    width: number;
+    height: number;
+  }
 }

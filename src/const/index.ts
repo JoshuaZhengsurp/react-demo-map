@@ -35,8 +35,8 @@ export const GRADIENT_INNER_RADIUS = 0;
 export const GRADIENT_BEGIN_OFFSET = 0;
 export const GRADIENT_END_OFFSET = 1;
 
-export const INITIAL_SCALE_RATIO = 1;
 /** 默认的变换配置对象 */
+export const INITIAL_SCALE_RATIO = 1;
 export const INITIAL_TRANSFORM_CONFIG: TransformConfig = {
 	scaleRatio: INITIAL_SCALE_RATIO,
 	positionRange: {
@@ -46,3 +46,6 @@ export const INITIAL_TRANSFORM_CONFIG: TransformConfig = {
 		maxY: 0,
 	},
 };
+
+// 图像平滑
+export const DEFALUT_IMAGE_SHOOTH_CHOICE = false
