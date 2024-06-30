@@ -24,6 +24,16 @@ declare global {
     height: number;
   }
 
+  /**
+   * 导航视窗区域内图片默认尺寸：以图片中心点为原点，进行等比例缩放
+   * 图片上下边距至少各留80px，左右边距至少留白40px，上下边距优先级高于左右边距
+   * 例如：当图片上下留白80px时，左右留白大于40px时，以上下留白80px为准
+  */
+  export interface GapSize {
+    horizontal: number;
+    vertical: number;
+  }
+
   // 画板参数
   interface BoardRect extends RectSize {
     left: number;

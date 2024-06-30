@@ -7,7 +7,7 @@ import {
   ERASE_POINT_OUTER_COLOR,
   EventType,
 } from "@/const";
-import { drawBrushPoint, getLoadedImage } from "@/helper/dom";
+import { drawBrushPoint, getLoadedImage } from "@/helpers/dom";
 import { useEffect } from "react";
 
 /** 抠图指针 */
