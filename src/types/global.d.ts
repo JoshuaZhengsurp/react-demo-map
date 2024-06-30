@@ -30,6 +30,14 @@ declare global {
     top: number;
   }
 
+  /** 绘制位置范围 */
+  interface PositionRange {
+    minX: number;
+    maxX: number;
+    minY: number;
+    maxY: number;
+  }
+
   /** 画板绘制上下文对象 */
   interface BoardContext2Ds {
     /** 输入画板绘制上下文 */

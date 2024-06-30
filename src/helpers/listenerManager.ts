@@ -1,11 +1,17 @@
 import { EventType } from "@/const";
-
 const { MouseDown, Mouseup, Mousemove } = EventType;
+
+import type {
+  UnbindDownUpCache,
+  UnbindMoveCache,
+  MouseListenerContext,
+  ListenerConfig,
+} from "@/types/listener-manager.d.ts";
 
 /**
  * mouse事件流 集中管理
  * 绑定事件, 并收集对应事件的卸载回调
-*/
+ */
 
 export default class ListenerManger {
   private unbindDownUpCache: UnbindDownUpCache = new WeakMap();

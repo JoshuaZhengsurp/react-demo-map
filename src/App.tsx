@@ -1,4 +1,4 @@
-import './App.css'
+// import './App.css'
 import Matting from "@/components/matting/Matting";
 import Header from './components/header/Header';
 
@@ -11,4 +11,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

@@ -2,7 +2,9 @@
  * 主要用于初始化计算
  */
 
-// 计算画板的左上角坐标,以及宽高
+/**
+ * @description 计算画板的左上角坐标,以及宽高
+ */ 
 export function computeBoardRect(canvas: HTMLCanvasElement) {
   const boardRect: DOMRect = canvas.getBoundingClientRect();
   const domRect: DOMRect = document.documentElement.getBoundingClientRect();

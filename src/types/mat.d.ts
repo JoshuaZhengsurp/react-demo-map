@@ -8,8 +8,8 @@ declare global {
     /** 蒙版图片的绘制数据(蒙版图片初始化结果) */
     mask: ImageBitmap;
     orig: ImageBitmap;
-    positionRange: any;
-    scaleRatio: any;
+    positionRange: PositionRange;
+    scaleRatio: number;
   }
 
   export interface InitMattingBaseConfig {

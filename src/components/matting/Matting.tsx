@@ -15,6 +15,9 @@ export default function Matting() {
 
   const {} = useMattingBoard({ picFile, isErasing, radius, hardness });
 
+  // const img = useStore((state)=>state.img);
+  // console.log('img', img);
+
   // const {cursorImage, mattingCursorStyle, renderOutputCursor} = useMattingCursor({
   //   inputCtx,
   //   isDragging: draggingInputBoard,

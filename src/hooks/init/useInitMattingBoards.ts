@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { setMatBoardState } from "../useMattingBoard";
 import { computeBoardRect } from "@/helpers/init-compute";
+import { resizeCanvas } from "@/helpers/dom";
 
 /**
  * 初始化抠图画板
@@ -23,17 +24,28 @@ export const useInitMattingBoards = (
 
   const resizeBoards = () => {
     requestAnimationFrame(() => {
-      const commConfig = {
+      const commonConfig = {
         targetWidth: width,
         targetHeight: height,
         transformConfig,
       };
-      resizeCanvas({})
-      // resizeCanvas({})
+      resizeCanvas({
+        ctx: boardContexts.inputCtx as CanvasRenderingContext2D,
+        hiddenCtx: boardContexts.inputHiddenCtx as CanvasRenderingContext2D,
+        ...commonConfig,
+      });
+      resizeCanvas({
+        ctx: boardContexts.outputCtx as CanvasRenderingContext2D,
+        hiddenCtx: boardContexts.outputHiddenCtx as CanvasRenderingContext2D,
+        withBorder: true,
+        ...commonConfig,
+      });
     });
   };
 
-  useEffect(() => {}, [picFile]);
+  useEffect(() => {
+    
+  }, [picFile]);
 
   useEffect(() => {
     return () => {};

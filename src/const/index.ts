@@ -49,3 +49,7 @@ export const INITIAL_TRANSFORM_CONFIG: TransformConfig = {
 
 // 图像平滑
 export const DEFALUT_IMAGE_SHOOTH_CHOICE = false
+
+// 图像边框绘制
+export const IMAGE_BORDER_STYLE = '#000000';
+export const IMAGE_BORDER_WIDTH = 1;

@@ -19,15 +19,17 @@ declare global {
     withBorder?: boolean;
   }
 
-  interface TransformedDrawingImageConfig extends DrawingContext, TransformConfig{
+  interface TransformedDrawingImageConfig
+    extends DrawingContext,
+      TransformConfig {
     clearOld?: boolean;
     withBorder?: boolean;
   }
 
-  // 画板变换时, 
+  // 画板变换时,
   interface DrawingContext {
-    ctx: CanvasRenderingContext2D,
-    hidden: CanvasRenderingContext2D,
+    ctx: CanvasRenderingContext2D;
+    hiddenCtx: CanvasRenderingContext2D;
   }
 
   /** 绘制圆点的配置对象 */
@@ -39,6 +41,13 @@ declare global {
     hardness: number;
     innerColor?: string;
     outerColor?: string;
+  }
+
+  interface DrawImageLineBorderConfig {
+    positionRange: PositionRange;
+    ctx: CanvasRenderingContext2D;
+    lineStyle?: string;
+    lineWidth?: number;
   }
 
   export interface CreateContext2DConfig {
